@@ -1,0 +1,17 @@
+---
+
+- name: Reboot all servers in a sequence with a wait time of 5mins in between
+
+  hosts: web_servers
+
+  become: true
+
+  serial: 1
+
+  tasks:
+    - name: Reboot servers in a sequence
+      ansible.builtin.reboot:
+        msg: Automated Initiation of reboot for servers
+        test_command: whoami                               #Test command which runs after reboot is done to check if the system is properly up#
+        reboot_timeout: 600                                #Maximum no. of seconds to wait for the machine to come up after reboot is done#
+        post_reboot_delay: 60                              #Waiting time after the reboot is done, to give atleast 60 seconds after the machine is up, allowing services/tasks to come up after a reboot#
