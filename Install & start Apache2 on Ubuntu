@@ -1,0 +1,17 @@
+---
+- name: Installation & enabling of Apache2 service on managed nodes
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install apache2 package
+      ansible.builtin.apt:
+        name: apache2        # <-- on Ubuntu, the package is "apache2", not "httpd"
+        state: present
+        update_cache: yes
+
+    - name: Start and enable apache2 service
+      ansible.builtin.service:
+        name: apache2
+        state: started
+        enabled: yes
