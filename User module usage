@@ -11,7 +11,7 @@
         comment: First ansible user
         append: yes
         group: admin
-        expires: 1753488000
+        expires: 1753488000                             # Convert date to timestamp & add the output to 'expires' parameter#
     - name: Copy a sample file to managed nodes
       ansible.builtin.copy:
         src: /home/k21943913@gmail.com/sample.txt       # Copying sample.txt from source to destination #
