@@ -1,0 +1,8 @@
+---
+- name: Ping all managed servers
+  hosts: all
+  become: true
+  tasks:
+    - name: Ping managed nodes
+      ansible.builtin.ping:
+        data: Ping returned a Pong
