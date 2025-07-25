@@ -1,0 +1,14 @@
+---
+- name: Create a user on managed nodes
+  hosts: all
+  become: true
+  tasks:
+    - name: Create a user along with a home directory
+      ansible.builtin.user:
+        name: user_name1
+        create_home: yes
+        password: User_name1
+        comment: First ansible user
+        append: yes
+        group: admin
+        expires: 1753488000      #Convert date in Unix to timestamp for 'expires' parameter #
